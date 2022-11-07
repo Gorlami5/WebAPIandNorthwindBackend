@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entity;
@@ -19,35 +20,39 @@ namespace Business.Concrete
 
             _productDal = productDal;   
         }
-        public void Add(Product product)
+        public IResult Add(Product product)
         {
                     
             _productDal.add(product);
+
+            return new SuccessResult("Add successfull");
         }
 
-        public void Delete(Product product)
+        public IResult Delete(Product product)
         {
             _productDal.delete(product);
+            return new SuccessResult("Delete successful");
         }
 
-        public Product GetByCategory(int id)
+        public IDataResult<Product> GetByCategory(int id)
         {
-            return _productDal.GetById(p=>p.CategoryID == id);
+            return new SuccessDataResult<Product>(_productDal.GetById(p => p.CategoryID == id));
         }
 
-        public List<Product> GetList()
+        public IDataResult<List<Product>> GetList()
         {
-           return _productDal.GetAll().ToList();
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll().ToList());
         }
 
-        public void Update(Product product)
+        public IResult Update(Product product)
         {
            _productDal.update(product);
+            return new SuccessResult("Update successful");
         }
 
-        public Product GetByProductId(int id)
+        public IDataResult<Product> GetByProductId(int id)
         {
-          return  _productDal.GetById(p=>p.ProductID == id );
+          return new SuccessDataResult<Product>(_productDal.GetById(p => p.ProductID == id));
         }
     }
 }
