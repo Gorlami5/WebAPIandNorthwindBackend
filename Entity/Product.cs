@@ -18,7 +18,7 @@ namespace Entity
 
         public string QuantityPerUnit { get; set; }
 
-        public string UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
 
         public short UnitsInStock { get; set; }
     }

@@ -24,7 +24,6 @@ namespace Business.Concrete
         {
                     
             _productDal.add(product);
-
             return new SuccessResult("Add successfull");
         }
 

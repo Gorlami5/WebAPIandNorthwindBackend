@@ -1,0 +1,24 @@
+﻿using Autofac;
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Business.DependencyResolver.Autofac
+{
+    public class AutofacBusinessModule:Module
+    {
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder.RegisterType<ProductManager>().As<IProductService>();
+            builder.RegisterType<EfProductDal>().As<IProductDal>();
+            builder.RegisterType<EfCategoryDal>().As<ICategoryDal>();
+            builder.RegisterType<CategoryManager>().As<ICategoryService>();
+        }
+    }
+}
