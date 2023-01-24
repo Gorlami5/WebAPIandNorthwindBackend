@@ -6,6 +6,7 @@ using DataAccess.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,8 @@ namespace Business.DependencyResolver.Autofac
             builder.RegisterType<EfProductDal>().As<IProductDal>();
             builder.RegisterType<EfCategoryDal>().As<ICategoryDal>();
             builder.RegisterType<CategoryManager>().As<ICategoryService>();
+            builder.RegisterType<IUserDal>().As<EfUserDal>();
+            builder.RegisterType<IUserService>().As<UserManager>();
         }
     }
 }
