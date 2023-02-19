@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-
+        [Authorize(Roles = "Porduct.List")]
         public IActionResult GetList()
         {
 

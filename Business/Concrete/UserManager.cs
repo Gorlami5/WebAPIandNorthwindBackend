@@ -24,7 +24,8 @@ namespace Business.Concrete
 
         public User GetEmail(string email)
         {
-            return null;
+            return _userdal.GetById(e => e.Email == email);
+            
         }
 
         public List<OperationClaim> GetUserClaims(User user)

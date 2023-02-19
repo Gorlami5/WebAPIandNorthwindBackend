@@ -15,7 +15,7 @@ namespace Core.EntityFramework.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server = (localdb)\mssqllocaldb;Database = Northwind;Trusted_Connection = true");
+            optionsBuilder.EnableSensitiveDataLogging().UseSqlServer(@"Server = (localdb)\mssqllocaldb;Database = Northwind;Trusted_Connection = true");
         }
 
         public DbSet<Product> Products { get; set; }
@@ -24,7 +24,7 @@ namespace Core.EntityFramework.Context
 
         public DbSet<User> Users { get; set; }
 
-        public DbSet<OperationClaim> OperationClaim { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
 
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
     }

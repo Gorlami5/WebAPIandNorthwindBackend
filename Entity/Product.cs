@@ -10,6 +10,7 @@ namespace Entity
 {
     public class Product : IEntity
     {
+        
         public int ProductID { get; set; }
 
         public string ProductName { get; set; }
@@ -21,5 +22,9 @@ namespace Entity
         public decimal UnitPrice { get; set; }
 
         public short UnitsInStock { get; set; }
+    
+
     }
+
+
 }

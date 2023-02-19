@@ -28,23 +28,24 @@ namespace Business.Concrete
         {
             var claim = _userService.GetUserClaims(user);
             var accessToken =  _tokenHelper.CreateToken(user,claim);
-            return new SuccessDataResult<User>(accessToken, "Token Created");
+            return new SuccessDataResult<AccessToken>(accessToken,"Token created.");
         }
 
+      
         public IDataResult<User> Login(UserForLoginDto userforlogindto)
         {
             var userToCheck = _userService.GetEmail(userforlogindto.Email);
             if (userToCheck ==  null)
             {
-                return new ErrorDataResult<User>("User not found");
+                //return new ErrorDataResult<User>("User not found");
             }
 
             if (!HashHelper.VerifyPassword(userforlogindto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
-                return new ErrorDataResult<User>("Password fault");
+                //return new ErrorDataResult<User>("Password fault");
             }
 
-            return new SuccessDataResult<User>(userToCheck,"Login Succesfull");
+            return new SuccessDataResult<User>(userToCheck, "Login Successfull");
         }
 
         public IDataResult<User> Register(UserForRegisterDto userforregisterdto, string password)
@@ -71,9 +72,10 @@ namespace Business.Concrete
         {
             if (_userService.GetEmail(email) == null)
             {
-                return new ErrorResult("sdsdsdsd");
+                return new SuccessResult();
             }
-            return new SuccessResult();
+
+            return new ErrorResult();
         }
     }
 }

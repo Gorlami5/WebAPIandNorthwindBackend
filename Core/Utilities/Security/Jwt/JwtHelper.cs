@@ -58,7 +58,7 @@ namespace Core.Utilities.Security.Jwt
 
         public IEnumerable<Claim> SetClaim(User user,List<OperationClaim> operationClaims)
         {
-            var claims = new List<Claim>(); //List kullanım örneği
+            var claims = new List<Claim>(); 
             claims.AddEmail(user.Email);
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddName($"{user.FirstName} {user.LastName}");
